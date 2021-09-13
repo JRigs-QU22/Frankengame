@@ -10,19 +10,20 @@ public class RandomSize : MonoBehaviour
     float ver;
     public float speed = 0f;
 
+    public int RandomScale;
+
     // number of frame for scale up or down
     public int scalingFramesUp = 0;
+
     public int scalingFramesDown = 0;
 
-    public GameObject door;
-
-    int count = 0;
-
+    public delegate void ScaleChange();
+    public static event ScaleChange Scaled;
 
     // Use this for initialization
     void Start()
     {
-
+        RandomScale = 0;
     }
 
     // Update is called once per frame
@@ -34,11 +35,12 @@ public class RandomSize : MonoBehaviour
         // Set the scaling frame, the bigger number the bigger change
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            scalingFramesUp = 5;
+            RandomScale = Random.Range(1, 10);
+            scalingFramesUp = RandomScale;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            scalingFramesDown = 5;
+            scalingFramesDown = RandomScale;
         }
 
         // Using lerp to increasing scale. 
@@ -53,10 +55,6 @@ public class RandomSize : MonoBehaviour
         {
             transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale / 4, Time.deltaTime * 8);
             scalingFramesDown--; // reset to 0
-        }
-        if (count == 2)
-        {
-            Destroy(door);
         }
 
     }

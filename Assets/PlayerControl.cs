@@ -13,21 +13,21 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow)) //if up arrow pressed, move up
+        if (Input.GetKeyDown(KeyCode.UpArrow)) //if up arrow pressed, move up
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(5000, 10000));
         }
         else if (Input.GetKey(KeyCode.DownArrow)) //if down arrow pressed, move down
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -20);
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) //if lrft arrow pressed, move left
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-1, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-20, 0);
         }
         else if (Input.GetKey(KeyCode.RightArrow)) //if right arrow pressed, move right
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(20, 0);
         }
         else
         {
