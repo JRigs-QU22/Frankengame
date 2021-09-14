@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TheDrop : MonoBehaviour
+public class ReveseTheDrop : MonoBehaviour
 {
     public GameObject objToSpawn;
 
@@ -12,13 +12,13 @@ public class TheDrop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        dropTIme -= Time.deltaTime; 
+        dropTIme -= Time.deltaTime;
 
         if (dropTIme <= 0.1)
         {

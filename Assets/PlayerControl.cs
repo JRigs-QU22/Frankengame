@@ -5,21 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+
+    public float addedForce = 800;
+    public Rigidbody2D rb;
+
+    public bool Jump;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Jump = false; 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //if up arrow pressed, move up
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !Jump) //if up arrow pressed, move up
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(5000, 10000));
-        }
-        else if (Input.GetKey(KeyCode.DownArrow)) //if down arrow pressed, move down
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -20);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(rb.velocity.x, addedForce));
+            Jump = true;
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) //if lrft arrow pressed, move left
         {
@@ -36,7 +39,15 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R)) // if player presses r 
         {
-            SceneManager.LoadScene("VisibilityToggle"); //reload the level
+            SceneManager.LoadScene("MainGame"); //reload the level
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((collision.gameObject.tag == "floor") && Jump == true) //if object collides with player
+        {
+            Jump = false;
         }
     }
 }

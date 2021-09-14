@@ -10,7 +10,7 @@ public class JumpOnCountdown : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Countdown.TimesUp += Jump; // register for jump event
+        Countdown.ScaleChange += Jump; // register for jump event
     }
 
     // called from Countdown (when TimesUp is called)

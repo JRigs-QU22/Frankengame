@@ -17,25 +17,21 @@ public class RandomSize : MonoBehaviour
 
     public int scalingFramesDown = 0;
 
-    public delegate void ScaleChange();
-    public static event ScaleChange Scaled;
-
     // Use this for initialization
     void Start()
     {
-        RandomScale = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        hor = Input.GetAxisRaw("Horizontal");
-        ver = Input.GetAxisRaw("Vertical");
+       // hor = Input.GetAxisRaw("Horizontal");
+      //  ver = Input.GetAxisRaw("Vertical");
 
         // Set the scaling frame, the bigger number the bigger change
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            RandomScale = Random.Range(1, 10);
             scalingFramesUp = RandomScale;
         }
         if (Input.GetKeyDown(KeyCode.E))
