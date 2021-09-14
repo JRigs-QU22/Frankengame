@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DestroyMe : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +14,11 @@ public class DestroyMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < -6.7f) //if object moves too far off screen
-        {
-            Destroy(gameObject); //move object back to marked starting position
-        }
+        
+    }
+
+    public void Play() //function to load bounty select screen
+    {
+        SceneManager.LoadScene("MainGame");
     }
 }
