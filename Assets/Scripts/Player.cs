@@ -6,17 +6,14 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rigidbody2D;
 
-    float hor;
-    float ver;
+
     public float speed = 5f;
 
     // number of frame for scale up or down
     public int scalingFramesUp = 0; 
     public int scalingFramesDown = 0;
 
-    public GameObject door;
 
-    int count = 0;
 
 
     // Use this for initialization
@@ -28,8 +25,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hor = Input.GetAxisRaw("Horizontal");
-        ver = Input.GetAxisRaw("Vertical");
 
         // Set the scaling frame, the bigger number the bigger change
         if (Input.GetKeyDown(KeyCode.Q))
@@ -54,51 +49,10 @@ public class Player : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale / 4, Time.deltaTime * 8);
             scalingFramesDown--; // reset to 0
         }
-        if (count == 2)
-        {
-            Destroy(door);
-        }
+
 
     }
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "b1")
-        {
-            Debug.Log("yay");
-            count = count + 1;
-            Debug.Log(count);
-        } 
-       
-        if (col.gameObject.tag == "b2")
-        {
-            Debug.Log("yay");
-            count = count + 1;
-            Debug.Log(count);
-        }
 
-    }
-    void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "b1")
-        {
-            Debug.Log("oof");
-            count = 0;
-            Debug.Log(count);
-        }
-
-        if (col.gameObject.tag == "b2")
-        {
-            Debug.Log("oof");
-            count = 0;
-            Debug.Log(count);
-        }
-    }
-
-
-    void FixedUpdate()
-    {
-        rigidbody2D.velocity = new Vector2(hor * speed, ver * speed);
-    }
 }
 
 // Source: https://forum.unity.com/threads/scaling-object-using-lerp.411289/

@@ -6,23 +6,23 @@ using UnityEngine.SceneManagement;
 public class PlayerControl : MonoBehaviour
 {
 
-    public float addedForce = 800;
-    public Rigidbody2D rb;
+    public float addedForce = 800; //force to add to jump
+    public Rigidbody2D rb; //player rigidbody
 
-    public bool Jump;
+    public bool Jump; //checks to see if player is jumping
 
     // Start is called before the first frame update
     void Start()
     {
-        Jump = false; 
+        Jump = false; //player is not jumping by default
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !Jump) //if up arrow pressed, move up
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !Jump) //if up arrow pressed, jump
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(rb.velocity.x, addedForce));
-            Jump = true;
+            Jump = true; //says player is jumping
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) //if lrft arrow pressed, move left
         {
@@ -45,9 +45,10 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "floor") && Jump == true) //if object collides with player
+        if ((collision.gameObject.tag == "floor") && Jump == true) //if player is on floor and is jumping
         {
-            Jump = false;
+            Jump = false; //sets jump to false to allow jumping again
         }
+
     }
 }

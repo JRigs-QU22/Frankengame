@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyMe : MonoBehaviour
 {
@@ -17,7 +18,15 @@ public class DestroyMe : MonoBehaviour
     {
         if (transform.position.y < -26.7f || transform.position.y > 26.7f) //if object moves too far off screen
         {
-            Destroy(gameObject); //move object back to marked starting position
+            Destroy(gameObject); //destorys object
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((collision.gameObject.tag == "Player")) //if object collides with player
+        {
+            Destroy(gameObject); //destroy object
         }
     }
 }

@@ -9,11 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 443023170323973936, guid: 221e671d198a24b458d12793359ac404, type: 3}
       propertyPath: m_Name
-      value: Obstacle Reversed
+      value: Obstacle Reversed Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 443023170323973936, guid: 221e671d198a24b458d12793359ac404, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7584963696074633025, guid: 221e671d198a24b458d12793359ac404, type: 3}
       propertyPath: m_GravityScale
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764232201884485061, guid: 221e671d198a24b458d12793359ac404, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8453957188723340719, guid: 221e671d198a24b458d12793359ac404, type: 3}
       propertyPath: m_LocalPosition.x
