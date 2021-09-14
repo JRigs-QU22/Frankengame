@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ddb3d31dbd0824f8f9bb8b2f710dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownEverySeconds: 7
+  countdownEverySeconds: 5
   counter: 0
 --- !u!1 &203202458
 GameObject:

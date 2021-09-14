@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScaleEvent : MonoBehaviour
 {
-    public delegate void Scale(); //delegate for event
-    public static event Scale ScaleChange; //static event to call for a scale change
+    //public delegate void Scale(); //delegate for event
+    //public static event Scale ScaleChange; //static event to call for a scale change
 
+    public static event Action<int> ScaleChange = delegate {};
    // public float countdown = 7f;
     //public float CountReduce = 1f;
     public float countdownEverySeconds = 1f; //reduces time by 1f each seconf
@@ -23,8 +25,13 @@ public class ScaleEvent : MonoBehaviour
         // if countdown is up
         if (counter < 0)
         {
-            ScaleChange(); // call the delegate
+            ScaleChange(0); // call the delegate
             counter = countdownEverySeconds; //sets counter to current seconds left
+        }
+        if (counter >= 7)
+        {
+            ScaleChange(1);
+            counter = countdownEverySeconds;
         }
 
         // update width

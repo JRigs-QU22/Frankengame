@@ -61,14 +61,22 @@ public class RandomScale : MonoBehaviour
     private void OnDisable()
     {
         ScaleEvent.ScaleChange -= ScaleUp; //disables event
-        ScaleDown();
+        
     }
 
 
-    void ScaleUp ()
+    void ScaleUp (int num)
     {
-        ScaleRand = Random.Range(-10, 5); //sets scaling frames to a random range
-        scalingFramesUp = ScaleRand; //sets the scale based on scaling frames
+        if (num == 0)
+        {
+            ScaleRand = Random.Range(0, 5); //sets scaling frames to a random range
+            scalingFramesUp = ScaleRand; //sets the scale based on scaling frames
+        }
+        else if (num == 1)
+        {
+            transform.localScale = StartScale; //restores scale to initial value
+        }
+        
     }
 
     void ScaleDown ()
