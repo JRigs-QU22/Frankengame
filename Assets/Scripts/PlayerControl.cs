@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float LeftSpeed = -20f;
-    public float RightSpeed = 20f;
+    public float LeftSpeed = -20f; //left movement speed
+    public float RightSpeed = 20f; //right movement speed
     public float addedForce = 800; //force to add to jump
     public Rigidbody2D rb; //player rigidbody
 
@@ -26,11 +26,11 @@ public class PlayerControl : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(rb.velocity.x, addedForce));
             Jump = true; //says player is jumping
-            LeftSpeed = -10f;
-            RightSpeed = 10f;
+            LeftSpeed = -10f; //slows left speed while in air
+            RightSpeed = 10f; //slows right speed while in air
 
         }
-        else if (Input.GetKey(KeyCode.A)) //if lrft arrow pressed, move left
+        else if (Input.GetKey(KeyCode.A)) //if left arrow pressed, move left
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(LeftSpeed, 0);
         }
@@ -51,11 +51,11 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "floor" || collision.gameObject.tag == "floorSpawn" ) && Jump == true) //if player is on floor and is jumping
+        if ((collision.gameObject.tag == "floor" || collision.gameObject.tag == "floorSpawn" ) && Jump == true) //if player is on a floor and is jumping
         {
             Jump = false; //sets jump to false to allow jumping again
-            LeftSpeed = -20f;
-            RightSpeed = 20f;
+            LeftSpeed = -20f; //restore left speed to default
+            RightSpeed = 20f; //restore right speed to default
         }
 
     }
