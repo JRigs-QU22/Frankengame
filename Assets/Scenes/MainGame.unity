@@ -446,6 +446,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownEverySeconds: 5
   counter: 0
+--- !u!1 &202958661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202958662}
+  - component: {fileID: 202958664}
+  - component: {fileID: 202958663}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &202958662
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202958661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1552172668}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -266, y: -46}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &202958663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202958661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Drops Left: '
+--- !u!222 &202958664
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202958661}
+  m_CullTransparentMesh: 0
 --- !u!1 &203202458
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,10 +670,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 203202460}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &387990489
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,10 +956,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 724181610}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &779120910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,10 +1302,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 801843167}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &863391777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1323,8 @@ GameObject:
   - component: {fileID: 863391778}
   - component: {fileID: 863391782}
   - component: {fileID: 863391783}
+  - component: {fileID: 863391784}
+  - component: {fileID: 863391785}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1257,7 +1347,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 25
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1366,8 +1456,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de96c5f82690345b79d0f51fc498f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftSpeed: -20
+  RightSpeed: 20
   addedForce: 8000
   rb: {fileID: 863391778}
+  Platform: {fileID: 0}
   Jump: 0
 --- !u!114 &863391783
 MonoBehaviour:
@@ -1385,6 +1478,42 @@ MonoBehaviour:
   speed: 5
   scalingFramesUp: 0
   scalingFramesDown: 0
+--- !u!114 &863391784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863391777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a511749687533478bc02c0b9f2f45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 863391778}
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
+  scalingFramesUp: 0
+  scalingFramesDown: 0
+  StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
+--- !u!114 &863391785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863391777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b03c3a0aeb18043817608a634bab37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objToSpawn: {fileID: 7525895677615507475, guid: 0a9103253f112e44eadfcd1eeb9b2e5b, type: 3}
+  dropsLeft: 5
+  below: {x: 0, y: 0, z: 0}
+  DropsReadout: {fileID: 202958663}
 --- !u!1 &1074744874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,10 +1659,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2111322200}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &1290101599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,6 +2020,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 193207787}
+  - {fileID: 202958662}
   m_Father: {fileID: 1391665064}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2041,10 +2174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1577499442}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &1796677009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,10 +2345,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1796677012}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &1868757185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,10 +2516,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1868757187}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &2000266562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,10 +2900,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2111322200}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1
 --- !u!1 &2123944874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +3071,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2123944877}
-  ScaleRand: 0
+  ScaleUpOrDown: 0
+  RandUpScale: 0
+  RandDownScale: 0
   scalingFramesUp: 0
   scalingFramesDown: 0
   StartScale: {x: 0, y: 0, z: 0}
+  countdownTime: 1

@@ -7,7 +7,10 @@ public class RandomScale : MonoBehaviour
     public Rigidbody2D rb; //object rigidbody
 
 
-    public int ScaleRand; //int for the random scale
+    public int ScaleUpOrDown; //int for the random scale
+
+    public int RandUpScale;
+    public int RandDownScale;
 
     // number of frame for scale up or down
     public int scalingFramesUp = 0; //starting value for scaling frames up (0 means no scaling)
@@ -15,6 +18,8 @@ public class RandomScale : MonoBehaviour
     public int scalingFramesDown = 0; //starting value for scaling frames down (0 means no scaling)
 
     public Vector3 StartScale; //stores starting scale values
+
+    public float countdownTime = 1f;
 
     // Use this for initialization
     void Start()
@@ -25,18 +30,26 @@ public class RandomScale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // hor = Input.GetAxisRaw("Horizontal");
-        //  ver = Input.GetAxisRaw("Vertical");
+        countdownTime -= Time.deltaTime;
+
+        if (countdownTime <= 0)
+        {
+            ScaleUpOrDown = Random.Range(1, 10);
+            countdownTime = 1f;
+        }
+      //ScaleUpOrDown = Random.Range(1,10); //sets scaling frames to a random range
+                                            // hor = Input.GetAxisRaw("Horizontal");
+                                            //  ver = Input.GetAxisRaw("Vertical");
 
         // Set the scaling frame, the bigger number the bigger change
-       // if (Input.GetKeyDown(KeyCode.Q))
-       // {
-       //     scalingFramesUp = ScaleRand;
-       // }
-       // if (Input.GetKeyDown(KeyCode.E))
-       // {
-       //     scalingFramesDown = ScaleRand;
-      //  }
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     scalingFramesUp = ScaleRand;
+        // }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     scalingFramesDown = ScaleRand;
+        //  }
 
         // Using lerp to increasing scale. 
         // Lerp(a,b,t) when a is start value return when t = 0, b is end value return when t = 1, t is the value used to interpolate between a and b.
@@ -55,6 +68,7 @@ public class RandomScale : MonoBehaviour
     }
     private void OnEnable()
     {
+       
         ScaleEvent.ScaleChange += ScaleUp; //enables event
     }
 
@@ -69,8 +83,19 @@ public class RandomScale : MonoBehaviour
     {
         if (num == 0)
         {
-            ScaleRand = Random.Range(0, 5); //sets scaling frames to a random range
-            scalingFramesUp = ScaleRand; //sets the scale based on scaling frames
+            
+
+            if (ScaleUpOrDown > 5)
+            {
+                RandUpScale = Random.Range(3, 5);
+                scalingFramesUp = RandUpScale; //sets the scale based on scaling frames
+            }
+            else if (ScaleUpOrDown <= 5)
+            {
+                RandDownScale = Random.Range(3, 5);
+                scalingFramesDown = RandDownScale; //sets the scale based on scaling frames
+            }
+            ScaleUpOrDown = ScaleUpOrDown; //sets the scale based on scaling frames
         }
         else if (num == 1)
         {
