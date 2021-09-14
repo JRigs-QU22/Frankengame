@@ -38,4 +38,4 @@ public class FollowCam : MonoBehaviour
     }
 }
 
-// Original post with image here  >  http://unity3diy.blogspot.com/2015/02/unity-2d-camera-follow-script.html
+//Script taken from: https://gist.github.com/unity3diy/5aa0b098cb06b3ccbe47

@@ -57,6 +57,10 @@ public class PlayerControl : MonoBehaviour
             LeftSpeed = -20f; //restore left speed to default
             RightSpeed = 20f; //restore right speed to default
         }
+        if((collision.gameObject.tag == "Obstacle")) //if player is hit by obstacle
+        {
+            SceneManager.LoadScene("MainGame"); //reload levels
+        }
 
     }
 }

@@ -7,10 +7,10 @@ public class RandomScale : MonoBehaviour
     public Rigidbody2D rb; //object rigidbody
 
 
-    public int ScaleUpOrDown; //int for the random scale
+    public int ScaleUpOrDown; //int for the random scale (decides to scale either up or down
 
-    public int RandUpScale;
-    public int RandDownScale;
+    public int RandUpScale; //number for scaling up
+    public int RandDownScale; //number for scaling down
 
     // number of frame for scale up or down
     public int scalingFramesUp = 0; //starting value for scaling frames up (0 means no scaling)
@@ -19,7 +19,7 @@ public class RandomScale : MonoBehaviour
 
     public Vector3 StartScale; //stores starting scale values
 
-    public float countdownTime = 1f;
+    public float countdownTime = 1f; //timer to refresh ScaleUpOrDown int
 
     // Use this for initialization
     void Start()
@@ -30,12 +30,12 @@ public class RandomScale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdownTime -= Time.deltaTime;
+        countdownTime -= Time.deltaTime; //decrease timer
 
-        if (countdownTime <= 0)
+        if (countdownTime <= 0) //if countdown timer reaches 0
         {
-            ScaleUpOrDown = Random.Range(1, 10);
-            countdownTime = 1f;
+            ScaleUpOrDown = Random.Range(1, 10); //pick random value between 1 and 10
+            countdownTime = 1f; //reset timer
         }
       //ScaleUpOrDown = Random.Range(1,10); //sets scaling frames to a random range
                                             // hor = Input.GetAxisRaw("Horizontal");
@@ -81,23 +81,22 @@ public class RandomScale : MonoBehaviour
 
     void ScaleUp (int num)
     {
-        if (num == 0)
+        if (num == 0) //on variation 1
         {
             
-
-            if (ScaleUpOrDown > 5)
+            if (ScaleUpOrDown >= 5) //if value is 5 or above
             {
-                RandUpScale = Random.Range(3, 5);
+                RandUpScale = Random.Range(3, 6); //scale up within random range
                 scalingFramesUp = RandUpScale; //sets the scale based on scaling frames
             }
-            else if (ScaleUpOrDown <= 5)
+            else if (ScaleUpOrDown < 5) //if value is below 5
             {
-                RandDownScale = Random.Range(3, 5);
+                RandDownScale = Random.Range(3, 5); //scale down in random range
                 scalingFramesDown = RandDownScale; //sets the scale based on scaling frames
             }
             ScaleUpOrDown = ScaleUpOrDown; //sets the scale based on scaling frames
         }
-        else if (num == 1)
+        else if (num == 1) //on variation 2
         {
             transform.localScale = StartScale; //restores scale to initial value
         }
