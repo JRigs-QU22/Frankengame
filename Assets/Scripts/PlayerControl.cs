@@ -61,6 +61,10 @@ public class PlayerControl : MonoBehaviour
         {
             SceneManager.LoadScene("MainGame"); //reload levels
         }
-
+        if ((collision.gameObject.tag == "SpeedFloor")) //if player is on a floor and is jumping
+        {
+            LeftSpeed = -5f; //restore left speed to default
+            RightSpeed = 5f; //restore right speed to default
+        }
     }
 }

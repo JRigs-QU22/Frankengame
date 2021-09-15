@@ -69,12 +69,12 @@ public class RandomScale : MonoBehaviour
     private void OnEnable()
     {
        
-        ScaleEvent.ScaleChange += ScaleUp; //enables event
+        //ScaleEvent.ScaleChange += ScaleUp; //enables event
     }
 
     private void OnDisable()
     {
-        ScaleEvent.ScaleChange -= ScaleUp; //disables event
+       // ScaleEvent.ScaleChange -= ScaleUp; //disables event
         
     }
 

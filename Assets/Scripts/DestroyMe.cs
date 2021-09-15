@@ -24,9 +24,14 @@ public class DestroyMe : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "Player" || collision.gameObject.tag == "floorSpawn")) //if object collides with player
+        if ((collision.gameObject.tag == "floorSpawn")) //if object collides with player
         {
             Destroy(gameObject); //destroy object
+        }
+
+        if ((collision.gameObject.tag == "Player")) //if object collides with player
+        {
+            SceneManager.LoadScene("MainGame"); //reload levels
         }
     }
 }
