@@ -38,7 +38,7 @@ public class RotateFloorAlt : MonoBehaviour
 
         }
     }
-    /*
+    
         private void OnEnable()
         {
            PauseEvent.Paused += Paused;
@@ -46,8 +46,9 @@ public class RotateFloorAlt : MonoBehaviour
         private void OnDisable()
         {
             PauseEvent.Paused -= Paused;
+        force = 20;
         }
-        */
+        
     void Rotate()
     {
         if (!IsUp)
@@ -76,10 +77,11 @@ public class RotateFloorAlt : MonoBehaviour
             //    this.GetComponent<Rigidbody2D>().rotation = 0;
         }
     }
-    /*
+    
         void Paused()
         {
-            GetComponent<Rigidbody2D>().angularVelocity = 0;
+        //this.GetComponent<Rigidbody2D>().angularVelocity = 0;
+        force = 0;
         }
-        */
+        
 }

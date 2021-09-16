@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpeedFloor : MonoBehaviour
 {
 
-    public PlayerControl player;
+  //  public PlayerControl player;
 
     public bool Slow;
     // Start is called before the first frame update

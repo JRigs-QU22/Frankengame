@@ -8,17 +8,40 @@ public class FloorLocation : MonoBehaviour
     public bool IsDown;
     public float Speed;
 
+    public bool IsStopped;
+
     // Start is called before the first frame update
     void Start()
     {
         IsUp = false;
         IsDown = true;
+        IsStopped = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveFloor();
+
+        if (IsStopped == false)
+        {
+            Speed = 4;
+        }
+        else if (IsStopped == true)
+        {
+            Speed = 0;
+        }
+    }
+
+    private void OnEnable()
+    {
+        PauseEvent.Paused += Stopped;
+        IsStopped = true;
+    }
+    private void OnDisable()
+    {
+        PauseEvent.Paused -= Stopped;
+        IsStopped = false;
     }
 
     void MoveFloor()
@@ -44,4 +67,11 @@ public class FloorLocation : MonoBehaviour
 
         }
     }
+
+    private void Stopped()
+    {
+        Speed = 0;
+    }
+   
+    
 }

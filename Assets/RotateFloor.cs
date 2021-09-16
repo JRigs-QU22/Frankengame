@@ -7,8 +7,7 @@ public class RotateFloor : MonoBehaviour
     public bool IsUp;
     public bool IsDown;
 
-    public bool WasLastUp;
-    public bool WasLastDown;
+    public bool IsPaused;
 
     public float force = 10;
 
@@ -20,8 +19,7 @@ public class RotateFloor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WasLastUp = false;
-        WasLastDown = false;
+        IsPaused = false;
         IsDown = true;
         IsUp = false;
         
@@ -37,17 +35,27 @@ public class RotateFloor : MonoBehaviour
             Rotate();
             
         }
+        if (IsPaused == true)
+        {
+            force = 0;
+        }
+        else if (IsPaused == false)
+        {
+            force = 20;
+        }
     }
-/*
+
     private void OnEnable()
     {
        PauseEvent.Paused += Paused;
+        IsPaused = true;
     }
     private void OnDisable()
     {
         PauseEvent.Paused -= Paused;
+        IsPaused = false;
     }
-    */
+    
     void Rotate()
     {
         if (!IsUp)
@@ -76,10 +84,16 @@ public class RotateFloor : MonoBehaviour
             //    this.GetComponent<Rigidbody2D>().rotation = 0;
         }
     }
-/*
+    /*
+        void Paused()
+        {
+            GetComponent<Rigidbody2D>().angularVelocity = 0;
+        }
+        */
     void Paused()
     {
-        GetComponent<Rigidbody2D>().angularVelocity = 0;
+        force = 0;
+        //this.GetComponent<Rigidbody2D>().angularVelocity = 0;
+
     }
-    */
 }
