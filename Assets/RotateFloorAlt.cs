@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateFloor : MonoBehaviour
+public class RotateFloorAlt : MonoBehaviour
 {
     public bool IsUp;
     public bool IsDown;
@@ -22,9 +22,9 @@ public class RotateFloor : MonoBehaviour
     {
         WasLastUp = false;
         WasLastDown = false;
-        IsDown = true;
-        IsUp = false;
-        
+        IsDown = false;
+        IsUp = true;
+
     }
 
     // Update is called once per frame
@@ -35,19 +35,19 @@ public class RotateFloor : MonoBehaviour
         if (Countdown < 0.1)
         {
             Rotate();
-            
+
         }
     }
-/*
-    private void OnEnable()
-    {
-       PauseEvent.Paused += Paused;
-    }
-    private void OnDisable()
-    {
-        PauseEvent.Paused -= Paused;
-    }
-    */
+    /*
+        private void OnEnable()
+        {
+           PauseEvent.Paused += Paused;
+        }
+        private void OnDisable()
+        {
+            PauseEvent.Paused -= Paused;
+        }
+        */
     void Rotate()
     {
         if (!IsUp)
@@ -60,7 +60,7 @@ public class RotateFloor : MonoBehaviour
                 IsUp = true;
                 Countdown = 7f;
             }
-            
+
         }
         else if (!IsDown)
         {
@@ -76,10 +76,10 @@ public class RotateFloor : MonoBehaviour
             //    this.GetComponent<Rigidbody2D>().rotation = 0;
         }
     }
-/*
-    void Paused()
-    {
-        GetComponent<Rigidbody2D>().angularVelocity = 0;
-    }
-    */
+    /*
+        void Paused()
+        {
+            GetComponent<Rigidbody2D>().angularVelocity = 0;
+        }
+        */
 }
