@@ -161,8 +161,6 @@ MonoBehaviour:
   IsPaused: 0
   force: 20
   Countdown: 7
-  StartRotation: {x: 0, y: 0, z: 0, w: 0}
-  MaxRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &13336419
 Rigidbody2D:
   serializedVersion: 4
@@ -289,12 +287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsUp: 0
   IsDown: 0
-  WasLastUp: 0
-  WasLastDown: 0
+  IsPaused: 0
   force: 10
   Countdown: 7
-  StartRotation: {x: 0, y: 0, z: 0, w: 0}
-  MaxRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &28221471
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +666,7 @@ GameObject:
   - component: {fileID: 209669720}
   - component: {fileID: 209669719}
   - component: {fileID: 209669718}
+  - component: {fileID: 209669722}
   m_Layer: 0
   m_Name: SpeedFloor (3)
   m_TagString: SpeedFloor
@@ -790,6 +786,19 @@ Transform:
   m_Father: {fileID: 841059826}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &209669722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209669717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53867cff5d12a441aca1d19b9005ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slow: 0
 --- !u!1 &210146098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,8 +1147,6 @@ MonoBehaviour:
   IsPaused: 0
   force: 20
   Countdown: 7
-  StartRotation: {x: 0, y: 0, z: 0, w: 0}
-  MaxRotation: {x: 0, y: 0, z: 35, w: 0}
 --- !u!1 &369550040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1412,7 @@ GameObject:
   - component: {fileID: 533098166}
   - component: {fileID: 533098165}
   - component: {fileID: 533098164}
+  - component: {fileID: 533098168}
   m_Layer: 0
   m_Name: SpeedFloor (2)
   m_TagString: SpeedFloor
@@ -1524,6 +1532,19 @@ Transform:
   m_Father: {fileID: 841059826}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &533098168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533098163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53867cff5d12a441aca1d19b9005ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slow: 0
 --- !u!1 &543041883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1666,8 @@ MonoBehaviour:
   countdownEverySeconds: 5
   counter: 5
   isRunning: 0
+  PauseUses: 3
+  UsesLeft: {fileID: 993641198}
 --- !u!1 &568673611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,6 +1784,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &993641196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993641197}
+  - component: {fileID: 993641199}
+  - component: {fileID: 993641198}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &993641197
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993641196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2041952282}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -219.81, y: -77.5}
+  m_SizeDelta: {x: 252.3722, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &993641198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993641196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.4339623, b: 0.044092815, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2bc972de3ccbe4841915ba01578d6c0c, type: 3}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stops Left: 3'
+--- !u!222 &993641199
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993641196}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1069100735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2640,8 +2742,6 @@ MonoBehaviour:
   IsPaused: 0
   force: 20
   Countdown: 7
-  StartRotation: {x: 0, y: 0, z: 0, w: 0}
-  MaxRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &1815810544
 Rigidbody2D:
   serializedVersion: 4
@@ -3095,6 +3195,7 @@ RectTransform:
   m_Children:
   - {fileID: 543041884}
   - {fileID: 210146099}
+  - {fileID: 993641197}
   m_Father: {fileID: 28221475}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3115,6 +3216,7 @@ GameObject:
   - component: {fileID: 2097033126}
   - component: {fileID: 2097033125}
   - component: {fileID: 2097033124}
+  - component: {fileID: 2097033128}
   m_Layer: 0
   m_Name: SpeedFloor (1)
   m_TagString: SpeedFloor
@@ -3234,3 +3336,16 @@ Transform:
   m_Father: {fileID: 841059826}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097033128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097033123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53867cff5d12a441aca1d19b9005ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slow: 0

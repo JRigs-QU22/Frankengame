@@ -9,11 +9,11 @@ public class PauseEvent : MonoBehaviour
     public static event PauseEffect Paused; //public event
 
     public float countdownEverySeconds = 1f; //reduces time by 1f each second
-    public float counter = 5f; //keeps track of current remaining time
+    public float counter = 3f; //keeps track of current remaining time
 
     public bool isRunning; //checks to see if event is running
 
-    public int PauseUses = 3; //Pause limit
+    public int PauseUses; //Pause limit
 
     public Text UsesLeft; //Text Element to indicate Pauses
 
@@ -22,22 +22,23 @@ public class PauseEvent : MonoBehaviour
     void Start()
     {
         isRunning = false; //event is false by default
+        PauseUses = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.F) && ) //if player presses f, change bool to run event
+        if (Input.GetKeyDown(KeyCode.F) && PauseUses > 0) //if player presses f, change bool to run event
         {
             isRunning = true;
             PauseUses = PauseUses - 1; //removes 1 use
-           
 
         }
 
         if (isRunning == true) //if event is true, run paused event
         {
             Paused();
+            
             counter -= Time.deltaTime; //reduce counter
 
 
@@ -48,9 +49,11 @@ public class PauseEvent : MonoBehaviour
         {
             isRunning = false;
             counter = countdownEverySeconds;
-
+            
 
         }
+        
+        UsesLeft.text = "Stops Left: " + PauseUses; //readout of uses left
 
         // update width
         float percentDone = counter / countdownEverySeconds; //reduces bar based on counting down time

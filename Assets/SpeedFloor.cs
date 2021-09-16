@@ -20,6 +20,10 @@ public class SpeedFloor : MonoBehaviour
         {
             gameObject.tag = "SpeedFloor"; //use slowing tag
         }
+        else if (Slow == false) //if movement isn't slowed
+        {
+            gameObject.tag = "floor"; //use normal tag
+        }
     }
 
     private void OnEnable()
@@ -27,7 +31,7 @@ public class SpeedFloor : MonoBehaviour
         PauseEvent.Paused += SpeedChange; //on event, remove slowing
         Slow = false; //disable slowing
     }
-    private void Ondisable()
+    private void OnDisable()
     {
         PauseEvent.Paused -= SpeedChange; //on event end, enable slowig
         Slow = true; //enable slowing

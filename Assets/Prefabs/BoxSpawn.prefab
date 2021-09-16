@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7525895677615507485}
   m_Layer: 0
   m_Name: BoxSpawn
-  m_TagString: floorSpawn
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
