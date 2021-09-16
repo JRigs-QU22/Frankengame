@@ -4,53 +4,50 @@ using UnityEngine;
 
 public class RotateFloor : MonoBehaviour
 {
-    public bool IsUp;
-    public bool IsDown;
+    public bool IsUp; //checks to see if object is rotated
+    public bool IsDown; //checks to see if object is flat
 
-    public bool IsPaused;
+    public bool IsPaused; //checks to see if object is paused
 
-    public float force = 10;
+    public float force = 20; //force added to rotate
 
-    public float Countdown = 7f;
-
-    public Quaternion StartRotation;
-    public Quaternion MaxRotation;
+    public float Countdown = 7f; //countdown in between movements
 
     // Start is called before the first frame update
     void Start()
     {
-        IsPaused = false;
-        IsDown = true;
-        IsUp = false;
+        IsPaused = false; //object not paused by default
+        IsDown = true; //Object flat by default
+        IsUp = false; //object rotated by default
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Countdown -= Time.deltaTime;
+        Countdown -= Time.deltaTime; //begin countdown on game start
 
-        if (Countdown < 0.1)
+        if (Countdown < 0.1) //when countdown reaches near zero
         {
-            Rotate();
+            Rotate(); //rotate object
             
         }
-        if (IsPaused == true)
+        if (IsPaused == true) // If object is paused, add no force
         {
             force = 0;
         }
-        else if (IsPaused == false)
+        else if (IsPaused == false) //If object is not paused, add initial force
         {
             force = 20;
         }
     }
 
-    private void OnEnable()
+    private void OnEnable() //on event pause object
     {
-       PauseEvent.Paused += Paused;
+       PauseEvent.Paused += Paused; 
         IsPaused = true;
     }
-    private void OnDisable()
+    private void OnDisable() //on event end, unpause object
     {
         PauseEvent.Paused -= Paused;
         IsPaused = false;
@@ -58,7 +55,7 @@ public class RotateFloor : MonoBehaviour
     
     void Rotate()
     {
-        if (!IsUp)
+        if (!IsUp) //if object is flat, add force until 45 degrees is reached, then stop rotation, reset countdown, and swap bool value
         {
             this.GetComponent<Rigidbody2D>().angularVelocity = force;
             if (this.GetComponent<Rigidbody2D>().rotation > 45)
@@ -70,7 +67,7 @@ public class RotateFloor : MonoBehaviour
             }
             
         }
-        else if (!IsDown)
+        else if (!IsDown) //if object is rotated, add negative force until 0 degrees is reached, then stop rotation, reset countdown, and swap bool values
         {
             this.GetComponent<Rigidbody2D>().angularVelocity = -force;
             if (this.GetComponent<Rigidbody2D>().rotation < 0)
@@ -90,7 +87,7 @@ public class RotateFloor : MonoBehaviour
             GetComponent<Rigidbody2D>().angularVelocity = 0;
         }
         */
-    void Paused()
+    void Paused() //function changes force to zero
     {
         force = 0;
         //this.GetComponent<Rigidbody2D>().angularVelocity = 0;

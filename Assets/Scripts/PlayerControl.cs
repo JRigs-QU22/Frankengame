@@ -51,21 +51,36 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if ((collision.gameObject.tag == "floor" || collision.gameObject.tag == "floorSpawn") && Jump == true) //if player is on a floor and is jumping
         {
             Jump = false; //sets jump to false to allow jumping again
             LeftSpeed = -20f; //restore left speed to default
             RightSpeed = 20f; //restore right speed to default
         }
+        */
         if((collision.gameObject.tag == "LAVA")) //if player is hit by obstacle
         {
             SceneManager.LoadScene("MainGamev2"); //reload levels
         }
-        if ((collision.gameObject.tag == "SpeedFloor") && Jump == true) //if player is on a floor and is jumping
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if ((collision.gameObject.tag == "floor") && Jump == true) //if player is on a floor and is jumping
         {
             Jump = false;
-            LeftSpeed = -5f; //restore left speed to default
-            RightSpeed = 5f; //restore right speed to default
+            LeftSpeed = -20f; //restore left speed to default
+            RightSpeed = 20f; //restore right speed to default
+            Debug.Log("hit");
+        }
+        if ((collision.gameObject.tag == "SpeedFloor") && Jump == true) //if player is on a slow floor and is jumping
+        {
+            Jump = false;
+            LeftSpeed = -5f; //slow player
+            RightSpeed = 5f; //slow player
+            Debug.Log("hit");
         }
     }
 }

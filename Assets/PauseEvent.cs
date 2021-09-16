@@ -1,46 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseEvent : MonoBehaviour
 {
-    public delegate void PauseEffect();
-    public static event PauseEffect Paused;
+    public delegate void PauseEffect(); //event delegate 
+    public static event PauseEffect Paused; //public event
 
-    public float countdownEverySeconds = 1f; //reduces time by 1f each seconf
+    public float countdownEverySeconds = 1f; //reduces time by 1f each second
     public float counter = 5f; //keeps track of current remaining time
 
-    public bool isRunning;
+    public bool isRunning; //checks to see if event is running
 
+    public int PauseUses = 3; //Pause limit
+
+    public Text UsesLeft; //Text Element to indicate Pauses
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        isRunning = false;
+        isRunning = false; //event is false by default
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.F)) //if player presses space, toggle the visibility of the attached object on or off
+        if (Input.GetKey(KeyCode.F) && ) //if player presses f, change bool to run event
         {
             isRunning = true;
+            PauseUses = PauseUses - 1; //removes 1 use
            
 
         }
 
-        if (isRunning == true)
+        if (isRunning == true) //if event is true, run paused event
         {
             Paused();
             counter -= Time.deltaTime; //reduce counter
 
 
         }
-        //Paused();
-        //counter -= Time.deltaTime; //reduce counter
-        //isRunning = true;
 
-        // update counter 
-        if (counter < 0)
+       
+        if (counter < 0) //if counter reaches zero, change bool, end event, and reset counter
         {
             isRunning = false;
             counter = countdownEverySeconds;

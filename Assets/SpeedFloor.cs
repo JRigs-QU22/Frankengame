@@ -5,38 +5,37 @@ using UnityEngine;
 public class SpeedFloor : MonoBehaviour
 {
 
-  //  public PlayerControl player;
+    public bool Slow; //sees if movement is slowed
 
-    public bool Slow;
     // Start is called before the first frame update
     void Start()
     {
-        Slow = true;
+        Slow = true; //slow by default
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Slow == true)
+        if (Slow == true) //if movement is slowed
         {
-            gameObject.tag = "SpeedFloor";
+            gameObject.tag = "SpeedFloor"; //use slowing tag
         }
     }
 
     private void OnEnable()
     {
-        PauseEvent.Paused += SpeedChange;
-        Slow = false;
+        PauseEvent.Paused += SpeedChange; //on event, remove slowing
+        Slow = false; //disable slowing
     }
     private void Ondisable()
     {
-        PauseEvent.Paused -= SpeedChange;
-        Slow = true;
+        PauseEvent.Paused -= SpeedChange; //on event end, enable slowig
+        Slow = true; //enable slowing
     }
 
     void SpeedChange()
     {
-        gameObject.tag = "floor";
+        gameObject.tag = "floor"; //function to change tag to remove slowing
         
     }
 
