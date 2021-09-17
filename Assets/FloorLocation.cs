@@ -23,9 +23,9 @@ public class FloorLocation : MonoBehaviour
     {
         MoveFloor(); //move floor up and down
 
-        if (IsStopped == false) // if floor isn't stopped, speed is starting 4 value
+        if (IsStopped == false) // if floor isn't stopped, speed is starting value
         {
-            Speed = 4;
+            Speed = 12;
         }
         else if (IsStopped == true) // if floor is stopped, speed changes to zero
         {

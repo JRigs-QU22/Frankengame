@@ -39,7 +39,8 @@ public class SpeedFloor : MonoBehaviour
 
     void SpeedChange()
     {
-        gameObject.tag = "floor"; //function to change tag to remove slowing
+        Slow = false;
+        //gameObject.tag = "floor"; //function to change tag to remove slowing
         
     }
 

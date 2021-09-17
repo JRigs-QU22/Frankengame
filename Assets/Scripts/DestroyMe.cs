@@ -24,7 +24,7 @@ public class DestroyMe : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "floorSpawn")) //if object collides with player
+        if ((collision.gameObject.tag == "floorSpawn")) //if object collides with floor spawned by player
         {
             Destroy(gameObject); //destroy object
         }

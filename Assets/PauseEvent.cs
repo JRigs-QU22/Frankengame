@@ -22,7 +22,7 @@ public class PauseEvent : MonoBehaviour
     void Start()
     {
         isRunning = false; //event is false by default
-        PauseUses = 3;
+        PauseUses = 3; //you can pause platforms 3 times
     }
 
     // Update is called once per frame
@@ -31,13 +31,13 @@ public class PauseEvent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && PauseUses > 0) //if player presses f, change bool to run event
         {
             isRunning = true;
-            PauseUses = PauseUses - 1; //removes 1 use
+            
 
         }
 
         if (isRunning == true) //if event is true, run paused event
         {
-            Paused();
+            Paused(); //runs event
             
             counter -= Time.deltaTime; //reduce counter
 
@@ -47,9 +47,9 @@ public class PauseEvent : MonoBehaviour
        
         if (counter < 0) //if counter reaches zero, change bool, end event, and reset counter
         {
-            isRunning = false;
-            counter = countdownEverySeconds;
-            
+            isRunning = false; // disables event run bool and stops event
+            counter = countdownEverySeconds; //counter equals time remaining
+            PauseUses = PauseUses - 1; //removes 1 use
 
         }
         

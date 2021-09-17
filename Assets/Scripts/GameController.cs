@@ -19,6 +19,6 @@ public class GameController : MonoBehaviour
 
     public void Play() //function to load level
     {
-        SceneManager.LoadScene("MainGamev2");
+        SceneManager.LoadScene("MainGamev2"); //load main level
     }
 }
