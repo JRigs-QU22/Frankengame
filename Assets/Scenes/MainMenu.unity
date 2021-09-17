@@ -780,15 +780,11 @@ MonoBehaviour:
   m_text: 'Use WASD to move/jump
 
 
-    Space to spawn mini floor beneath player
+    Avoid obstables and stay on the path
 
 
-    Avoid
-    obstables and stay on the path
-
-
-    Make it to the end and reach the green win
-    object'
+    Make
+    it to the end and reach the green win object'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9714c3f08fc0b0f4c8272b4060d7e28e, type: 2}
   m_sharedMaterial: {fileID: -4142150737179527634, guid: 9714c3f08fc0b0f4c8272b4060d7e28e, type: 2}

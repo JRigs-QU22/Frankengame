@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void Play() //function to load bounty select screen
+    public void Play() //function to load level
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("MainGamev2");
     }
 }
