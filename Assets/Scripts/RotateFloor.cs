@@ -11,7 +11,7 @@ public class RotateFloor : MonoBehaviour
 
     public float force = 20; //force added to rotate
 
-    public float Countdown = 7f; //countdown in between movements
+    public float Countdown = 5f; //countdown in between movements
 
     // Start is called before the first frame update
     void Start()
@@ -81,12 +81,7 @@ public class RotateFloor : MonoBehaviour
             //    this.GetComponent<Rigidbody2D>().rotation = 0;
         }
     }
-    /*
-        void Paused()
-        {
-            GetComponent<Rigidbody2D>().angularVelocity = 0;
-        }
-        */
+
     void Paused() //function changes force to zero
     {
         force = 0;

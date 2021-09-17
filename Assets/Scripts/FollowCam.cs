@@ -39,3 +39,4 @@ public class FollowCam : MonoBehaviour
 }
 
 //Script taken from: https://gist.github.com/unity3diy/5aa0b098cb06b3ccbe47
+//Commenting done by me

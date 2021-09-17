@@ -11,7 +11,7 @@ public class RotateFloorAlt : MonoBehaviour
 
     public float force = 20; //force added to rotate
 
-    public float Countdown = 7f; //how long to wait before moving
+    public float Countdown = 5f; //how long to wait before moving
 
     //public Quaternion StartRotation; 
     //public Quaternion MaxRotation;
